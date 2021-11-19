@@ -9,10 +9,9 @@ using interop.ICApiIronCAD;
 namespace ICApiAddin.icAPI_Sample_CS
 {
     [Guid("6AE87CEF-C966-4938-A945-40D4280F6021"), ClassInterface(ClassInterfaceType.None), ProgId("icAPI_Sample_CS.AddIn")]
-    public class Addin : IZAddinServer, IZEDOTriballCallback
+    public class Addin : IZAddinServer
     {
-        //, IZEDOSelectionCallback
-        public const string ADDIN_GUID = "6AE87CEF-C966-4938-A945-40D4280F6021";
+         public const string ADDIN_GUID = "6AE87CEF-C966-4938-A945-40D4280F6021";
 
         #region [Private Members]
         private ZAddinSite m_izAddinSite;
@@ -23,9 +22,13 @@ namespace ICApiAddin.icAPI_Sample_CS
         //Constractor
         public Addin()
         {
+#if ADDIN_INIT_DEBUG
+            /* アドインロードのデバッグ用 */
+            System.Threading.Thread.Sleep(120 * 1000);
+#endif           
         }
 
-        #region [Public Properties]
+#region [Public Properties]
         public IZBaseApp IronCADApp
         {
             get
@@ -37,9 +40,9 @@ namespace ICApiAddin.icAPI_Sample_CS
 
         }
 
-        #endregion
+#endregion
 
-        #region [IZAddinServer Members]
+#region [IZAddinServer Members]
         public void InitSelf(ZAddinSite piAddinSite)
         {
             if (piAddinSite != null)
@@ -110,9 +113,9 @@ namespace ICApiAddin.icAPI_Sample_CS
             m_buttonForm = null;
          }
 
-        #endregion
+#endregion
 
-        #region [Private Methods]
+#region [Private Methods]
         [DllImport("icAPI_CppWrapper.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
         private static extern IntPtr HwndToCwnd(IntPtr hwnd);
 
@@ -180,9 +183,9 @@ namespace ICApiAddin.icAPI_Sample_CS
             return null;
         }
 
-        #endregion
+#endregion
 
-        #region [Internal Methods]
+#region [Internal Methods]
 
         internal static List<IZElement> ConvertObjectToElementArray(object varElements)
         {
@@ -206,42 +209,7 @@ namespace ICApiAddin.icAPI_Sample_CS
             return null;
         }
 
-        #endregion
+#endregion
 
-        #region [Public IZEDOSelectionCallback]
-        public void OnDeselect(IZElement piElement, ref bool pvbOverride)
-        {
-            MessageBox.Show("deselect");
-            // throw new NotImplementedException();
-        }
-
-        public void OnSelect(IZElement piElement, ref bool pvbOverride)
-        {
-            MessageBox.Show("select");
-            // throw new NotImplementedException();
-        }
-        #endregion
-        #region [Public IZEDOSelectionCallback]
-        public void OnPreTriballMove (IZElement piElement, ref bool pvbOverride)
-        {
-            MessageBox.Show("deselect");
-            // throw new NotImplementedException();
-        }
-        public void OnPreTriballCopy(IZElement piElement, ref bool pvbOverride)
-        {
-            MessageBox.Show("deselect");
-            // throw new NotImplementedException();
-        }
-        public void OnPostTriballMove(IZElement piElement, ref bool pvbOverride)
-        {
-            MessageBox.Show("deselect");
-            // throw new NotImplementedException();
-        }
-        public void OnPostTriballCopy(IZElement piElement, ref bool pvbOverride)
-        {
-            MessageBox.Show("deselect");
-            // throw new NotImplementedException();
-        }
-        #endregion
     }
 }
