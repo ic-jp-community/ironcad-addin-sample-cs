@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_796CC01C792548DBB6AA37C202313138"
+        "MsmKey" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -33,26 +33,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E1966EAC47DF6190866CA84E7191284E"
-        "OwnerKey" = "8:_796CC01C792548DBB6AA37C202313138"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_796CC01C792548DBB6AA37C202313138"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E1966EAC47DF6190866CA84E7191284E"
+        "MsmKey" = "8:_EC1198626472B0C3900089894251085A"
+        "OwnerKey" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B4DC023F2603480AB88C084E65D0AFC1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EC1198626472B0C3900089894251085A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -127,31 +127,31 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_432F9B828731406985688342347B7834"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_822C8AFABED846E2896121A87D1FC37F"
             {
-            "Name" = "8:プライマリ出力 from IronCAD_Configuration (Active)"
+            "Name" = "8:プライマリ出力 from icAPI_Sample_CS_Configuration (Active)"
             "Condition" = "8:"
-            "Object" = "8:_796CC01C792548DBB6AA37C202313138"
-            "FileType" = "3:1"
-            "InstallAction" = "3:4"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_5779B2B1_48CC_4CF3_98B0_527DB292F50A"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_6D0A753ED3AC4C9D942F70AB5B82848B"
-            {
-            "Name" = "8:プライマリ出力 from IronCAD_Configuration (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_796CC01C792548DBB6AA37C202313138"
+            "Object" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
             "FileType" = "3:1"
             "InstallAction" = "3:1"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_8396F655_C85E_478F_A0CE_7026D916A2A4"
+            "Identifier" = "8:_6BAAEECF_EA6E_4480_8993_25F60C2F4B9D"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_EB859F657385445CB44F932DCD2AEF25"
+            {
+            "Name" = "8:プライマリ出力 from icAPI_Sample_CS_Configuration (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
+            "FileType" = "3:1"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_429168B7_226A_4FC3_81F7_C20532B9D871"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -178,14 +178,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E1966EAC47DF6190866CA84E7191284E"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC1198626472B0C3900089894251085A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:IRONCAD_ICAPI_CS, Version=0.0.0.1, Culture=neutral, PublicKeyToken=a2b0442fc83d6b2c, processorArchitecture=AMD64"
                 "ScatterAssemblies"
                 {
-                    "_E1966EAC47DF6190866CA84E7191284E"
+                    "_EC1198626472B0C3900089894251085A"
                     {
                     "Name" = "8:IRONCAD_ICAPI_CS.dll"
                     "Attributes" = "3:512"
@@ -266,7 +266,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:IRONCAD icAPI Sample C#(ProductName)"
         "ProductCode" = "8:{9B2E9E7F-B5DC-41F5-A0D5-C8251510BAB7}"
-        "PackageCode" = "8:{F4DEDF1C-4CC7-4633-B5FB-E3991225DDBD}"
+        "PackageCode" = "8:{5513CEE7-12A1-4BB1-8C77-0E6CCB3CA82B}"
         "UpgradeCode" = "8:{DBA044CD-92AD-4A49-962F-9E0242CA5BF1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -785,9 +785,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_796CC01C792548DBB6AA37C202313138"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_36C159DDC27444ED8C0B83FDC49EFD0E"
             {
-            "SourcePath" = "8:..\\IronCAD_Configuration\\obj\\Debug\\IronCAD_Configuration.dll"
+            "SourcePath" = "8:..\\icAPI_Sample_CS_Configuration\\obj\\x64\\Debug\\icAPI_Sample_CS_Configuration.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63D6B68AA8944334B143819022A0F121"

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("IRONCAD_Configuration")]
+[assembly: AssemblyTitle("icAPI_Sample_CS_Configuration")]
 [assembly: AssemblyDescription("インストール アンインストール時の処理")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("IRONCAD JP Community")]
-[assembly: AssemblyProduct("IRONCAD__Configuration")]
+[assembly: AssemblyProduct("icAPI_Sample_CS_Configuration")]
 [assembly: AssemblyCopyright("Copyright © IRONCAD JP COMMUNITY 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -7,8 +7,8 @@
     <ProjectGuid>{07C73980-2CED-4DB9-9F2A-E2E7ACF27F53}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IronCAD_Configuration</RootNamespace>
-    <AssemblyName>IronCAD_Configuration</AssemblyName>
+    <RootNamespace>icAPI_Sample_CS_Configuration</RootNamespace>
+    <AssemblyName>icAPI_Sample_CS_Configuration</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -80,9 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IronCAD_Configuration.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="icAPI_Sample_CS_Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
