@@ -66,6 +66,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExpandableGridView">
+      <HintPath>ExternDLL\ExpandableGridView.dll</HintPath>
+    </Reference>
     <Reference Include="interop.ICApiIronCAD">
       <HintPath>ExternDLL\interop.ICApiIronCAD.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -75,6 +78,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -106,6 +110,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SampleSceneTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SampleSceneTree.Designer.cs">
+      <DependentUpon>SampleSceneTree.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl_DockBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +130,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SampleSceneTree.resx">
+      <DependentUpon>SampleSceneTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl_DockBar.resx">
       <DependentUpon>UserControl_DockBar.cs</DependentUpon>
@@ -151,6 +164,54 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\icon_form_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Assembly.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\ImageNone.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\LinkAssembly.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\LinkedPartsSheet.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\LinkedProfile.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\LinkedSheetMetal.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\LinkedWire.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\LinkParts.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Parts.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\PartsSheet.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Profile.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Scene.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\SheetMetal.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Wire.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\icon_scenetree_l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\icon_scenetree_s.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -17,6 +17,7 @@ namespace ICApiAddin.icAPI_Sample_CS
         private ZAddinSite m_izAddinSite;
         private ZCommandHandler m_buttonForm;
         private ZCommandHandler m_buttonDockingBar;
+        private ZCommandHandler m_buttonSceneTreeForm;
         #endregion
 
         //Constractor
@@ -62,6 +63,12 @@ namespace ICApiAddin.icAPI_Sample_CS
                     m_buttonDockingBar = piAddinSite.CreateCommandHandler("SampleDockingBar", "SampleDockingBar", "icAPI C# SampleDockingBar Description", "icAPI C# SampleDockingBar ToolTip", oImageSmall2, oImageLarge2);
                     m_buttonDockingBar.Enabled = true;
 
+                    //ボタンの作成(Form)
+                    stdole.IPictureDisp oImageSmall3 = ConvertImage.ImageToPictureDisp(Properties.Resources.icon_scenetree_s);
+                    stdole.IPictureDisp oImageLarge3 = ConvertImage.ImageToPictureDisp(Properties.Resources.icon_scenetree_l);
+                    m_buttonSceneTreeForm = piAddinSite.CreateCommandHandler("SceneTreeForm", "SceneTreeForm", "icAPI C# SceneTreeForm Description", "icAPI C# SceneTreeForm ToolTip", oImageSmall3, oImageLarge3);
+                    m_buttonSceneTreeForm.Enabled = true;
+
                     //Control bar
                     ZControlBar cControlBar;
                     ZEnvironmentMgr cEnvMgr = this.IronCADApp.EnvironmentMgr;
@@ -76,23 +83,26 @@ namespace ICApiAddin.icAPI_Sample_CS
                     cControls = cControlBar.Controls;
                     cControl = cControls.Add(ezControlType.Z_CONTROL_BUTTON, m_buttonForm.ControlDescriptor, null);
                     cControl = cControls.Add(ezControlType.Z_CONTROL_BUTTON, m_buttonDockingBar.ControlDescriptor, null);
+                    cControl = cControls.Add(ezControlType.Z_CONTROL_BUTTON, m_buttonSceneTreeForm.ControlDescriptor, null);
 
                     //Add button to RibbonBar
-//                    cRibbonBar.AddButton(m_buttonForm.ControlDescriptor);
+                    //                    cRibbonBar.AddButton(m_buttonForm.ControlDescriptor);
                     cRibbonBar.AddButton2(m_buttonForm.ControlDescriptor, false);
                     cRibbonBar.AddButton2(m_buttonDockingBar.ControlDescriptor, true);
+                    cRibbonBar.AddButton2(m_buttonSceneTreeForm.ControlDescriptor, true);
 
                     /************************************************************
                       リボンバーに大きいボタンで表示させたい時はこっち↓を使用する
                       cRibbonBar.AddButton2(m_button.ControlDescriptor, true);
                     *************************************************************/
 
-
                     //Event handlers
                     m_buttonForm.OnClick += new _IZCommandEvents_OnClickEventHandler(m_buttonForm_OnClick);
                     m_buttonForm.OnUpdate += new _IZCommandEvents_OnUpdateEventHandler(m_buttonForm_OnUpdate);
                     m_buttonDockingBar.OnClick += new _IZCommandEvents_OnClickEventHandler(m_buttonDockingBar_OnClick);
                     m_buttonDockingBar.OnUpdate += new _IZCommandEvents_OnUpdateEventHandler(m_buttonDockingBar_OnUpdate);
+                    m_buttonSceneTreeForm.OnClick += new _IZCommandEvents_OnClickEventHandler(m_buttonSceneTreeForm_OnClick);
+                    m_buttonSceneTreeForm.OnUpdate += new _IZCommandEvents_OnUpdateEventHandler(m_buttonSceneTreeForm_OnUpdate);
 
                     //Register App Events
                 }
@@ -127,6 +137,11 @@ namespace ICApiAddin.icAPI_Sample_CS
         {
             m_buttonDockingBar.Enabled = true;  //Change to m_button.Enabled = false; to disable the button  
         }
+        private void m_buttonSceneTreeForm_OnUpdate()
+        {
+            m_buttonSceneTreeForm.Enabled = true;  //Change to m_button.Enabled = false; to disable the button  
+        }
+
 
         private void m_buttonForm_OnClick()
         {
@@ -138,7 +153,7 @@ namespace ICApiAddin.icAPI_Sample_CS
                 frm.IronCADDocument = iZDoc;
                 frm.IronCADEnvMgr = iZEnvMgr;
                 frm.IronCADAddinSite = m_izAddinSite;
-                frm.Show();
+                frm.ShowDialog();
             }
         }
 
@@ -164,6 +179,15 @@ namespace ICApiAddin.icAPI_Sample_CS
            
         }
 
+        private void m_buttonSceneTreeForm_OnClick()
+        {
+            IZDoc iZDoc = GetActiveDoc();
+            if (iZDoc != null)
+            {
+                SampleSceneTree sampleTreeform = new SampleSceneTree(iZDoc);
+                sampleTreeform.ShowDialog();
+            }
+        }
 
         private IZDoc GetActiveDoc()
         {

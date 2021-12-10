@@ -117,65 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Assembly" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\Assembly.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_dockbar_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\icon_dockbar_l.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_dockbar_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\icon_dockbar_s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_form_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\icon_form_l.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_form_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\icon_form_s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_scenetree_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\icon_scenetree_l.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_scenetree_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\icon_scenetree_s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageNone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\ImageNone.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LinkAssembly" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\LinkAssembly.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LinkedPartsSheet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\LinkedPartsSheet.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LinkedProfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\LinkedProfile.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LinkedSheetMetal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\LinkedSheetMetal.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LinkedWire" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\LinkedWire.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LinkParts" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\LinkParts.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Parts" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\Parts.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PartsSheet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\PartsSheet.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Profile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\Profile.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Scene" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\Scene.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SheetMetal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\SheetMetal.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Wire" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\Wire.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="Scene.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="SystemName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="DataType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Depth.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ExternalLink.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAAAAAAAEAIADdBQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAEAAAABAAgGAAAAXHKoZgAAAAFv
+        ck5UAc+id5oAAAWXSURBVHja7d2xahRdGMfhzQ3YpLS0EEsrLYUEQTzeUVqPpZDOW/AG0omlsCEghEAQ
+        OYLXYCej78ioyK5ilt1k3z3PD/7MV31sJjOPW53Mnr349M2Wbj5T+uL3WD3Lf9/MTQAAAABgAAAAAAwA
+        AACAAQAAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgA
+        AACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAACAa1mpbbyex/V2XO9Z2t2JvZp+
+        nwaA/wZgGB8aD05+yKff4eB+AMDMAGBmADAzAJgBwMwAYGYAMDMAmBkAzAwAZgYAMwOAmQHAzABgZgAw
+        MwCYGQBy78cBEpkPBFnjQRhD1vvw83OPB7x4pgFw1QfnQ1wfxbVkW3zup3E9WuM9OZr+n9nuxePYa880
+        AK4MQCz1oaDx+Q/W8S/3dC8OEh8K+twzDYBVNk9+Gu7hGu/FoVOBAQAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwmV0CAAA9AHDflu4uAPIDUGp7
+        mflPvG0cAP3zJQJA/m8A4/Zs+bzlu4sXACQAAEACAAAkAABAAgAAJAAAQAIAACQAAEACAAAkAABAAgAA
+        JAC4oxIAJAFAEgAkAUASACQBQBIAtuc+eBgEgJ6/AcTnP46d2OK8KQDYeQBKbadOAHYqMAD6/QYw97ID
+        AAAAMAAAAAAGAAAAwAAAAAAAQAAAAAAEAAAAQAAAAAAEAAAAQAAAAAAEAAAAQAAAAAAEAAAAQAAAAAAE
+        AAAAQAAAAAAEAAAAQAAAAAAEAAAAQAAAAAAEAAAAQAAAAAAEAAAAQAAAAAC0rQCU2h4mvxfv4mfwwgMA
+        ACtsmBBI+YCPn3v67IMXHgAAMAMAAMwAAAADgABgABAADAACgAFAADAACAAGAAHAACAAGAAEAAOAAGAA
+        EAAMAAKAAUAAMAAIAAYAAcAAoNwAlNo+xt7Hf6dbfO6zuH7xsgMAACseqRXX9GcCetkBAACnAhsAAAAA
+        AwAAAGAAAAAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAA
+        AgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAsBmKrWdetkBAIB+vwEcx05scd4UAOw0
+        APHZPQwCQM/fACQAAEACAAAkAABAAgAAJAAAQAIAACQAAEACAAAkAABAAoA7KgFAEgAkAUASACQBQBIA
+        JAFAEgAkAUASAG7sXux5IgSAjr8BxM/wJvbWfu0sdsubAoAuACi1ffWHQP5c3JN9bwoAevkGAIDFAQAA
+        AACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAA
+        AAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAAgAAACAAAAAAGg7ACi1jdcHAACA+gXgc+wy6+JnuIjr
+        4IUHAADMAAAAMwAAwAAgABgABAADgABgABAADAACgAFAADAACAAGAAHAACAAGAAEAAOAAGAAEAAMAAKA
+        AUA3VqntiQf896Em08EmBoAu/vV3ExZBdCQYANQxigAAgABgABAADAACAAAkAABAAgAAJAAAQAIAACQA
+        AEACAAAkAABAAgAAJAAAQAIAACQAAEACAAAkAABAAgAAJAAAQAIAACQAAEACAAAkAABAAgAAJABc519M
+        2v8O/6xXb6cSBuMAAAAASUVORK5CYII=
+</value>
   </data>
 </root>
