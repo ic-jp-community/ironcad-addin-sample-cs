@@ -113,6 +113,26 @@ namespace ICApiAddin.icAPI_Sample_CS.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_samplematrix_l {
+            get {
+                object obj = ResourceManager.GetObject("icon_samplematrix_l", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_samplematrix_s {
+            get {
+                object obj = ResourceManager.GetObject("icon_samplematrix_s", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_scenetree_l {
             get {
                 object obj = ResourceManager.GetObject("icon_scenetree_l", resourceCulture);

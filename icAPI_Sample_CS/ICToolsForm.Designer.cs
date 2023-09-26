@@ -37,14 +37,17 @@
             this.buttonStartEvent = new System.Windows.Forms.Button();
             this.buttonStopEvent = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(355, 322);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonClose.Location = new System.Drawing.Point(275, 310);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(100, 26);
+            this.buttonClose.Size = new System.Drawing.Size(75, 21);
             this.buttonClose.TabIndex = 0;
             this.buttonClose.Text = "閉じる";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -55,29 +58,26 @@
             this.lblDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisplay.Location = new System.Drawing.Point(147, 5);
-            this.lblDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDisplay.Location = new System.Drawing.Point(104, 9);
             this.lblDisplay.Name = "lblDisplay";
-            this.lblDisplay.Size = new System.Drawing.Size(308, 26);
+            this.lblDisplay.Size = new System.Drawing.Size(231, 21);
             this.lblDisplay.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 10);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(6, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 15);
+            this.label1.Size = new System.Drawing.Size(75, 12);
             this.label1.TabIndex = 2;
             this.label1.Text = "現在のファイル:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 46);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(9, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 15);
+            this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 3;
             this.label2.Text = "現在の情報:";
             // 
@@ -86,18 +86,16 @@
             this.lblResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblResult.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.Location = new System.Drawing.Point(24, 69);
-            this.lblResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblResult.Location = new System.Drawing.Point(12, 60);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(431, 149);
+            this.lblResult.Size = new System.Drawing.Size(323, 119);
             this.lblResult.TabIndex = 4;
             // 
             // buttonStartEvent
             // 
-            this.buttonStartEvent.Location = new System.Drawing.Point(287, 229);
-            this.buttonStartEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonStartEvent.Location = new System.Drawing.Point(209, 188);
             this.buttonStartEvent.Name = "buttonStartEvent";
-            this.buttonStartEvent.Size = new System.Drawing.Size(168, 29);
+            this.buttonStartEvent.Size = new System.Drawing.Size(126, 23);
             this.buttonStartEvent.TabIndex = 6;
             this.buttonStartEvent.Text = "イベントハンドラ登録";
             this.buttonStartEvent.UseVisualStyleBackColor = true;
@@ -105,10 +103,9 @@
             // 
             // buttonStopEvent
             // 
-            this.buttonStopEvent.Location = new System.Drawing.Point(287, 265);
-            this.buttonStopEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonStopEvent.Location = new System.Drawing.Point(209, 217);
             this.buttonStopEvent.Name = "buttonStopEvent";
-            this.buttonStopEvent.Size = new System.Drawing.Size(168, 29);
+            this.buttonStopEvent.Size = new System.Drawing.Size(126, 23);
             this.buttonStopEvent.TabIndex = 7;
             this.buttonStopEvent.Text = "イベントハンドラ削除";
             this.buttonStopEvent.UseVisualStyleBackColor = true;
@@ -116,31 +113,53 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(42, 265);
+            this.textBox1.Location = new System.Drawing.Point(26, 217);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 22);
+            this.textBox1.Size = new System.Drawing.Size(128, 19);
             this.textBox1.TabIndex = 8;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(11, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(354, 292);
+            this.tabControl1.TabIndex = 9;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.lblDisplay);
+            this.tabPage1.Controls.Add(this.buttonStopEvent);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.buttonStartEvent);
+            this.tabPage1.Controls.Add(this.lblResult);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(346, 266);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "情報";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // ICToolsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 364);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.buttonStopEvent);
-            this.Controls.Add(this.buttonStartEvent);
-            this.Controls.Add(this.lblResult);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblDisplay);
+            this.ClientSize = new System.Drawing.Size(377, 339);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.buttonClose);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ICToolsForm";
             this.Text = "IRONCAD Addin Sample CS";
             this.Load += new System.EventHandler(this.ICToolsForm_Load);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -154,5 +173,7 @@
         private System.Windows.Forms.Button buttonStartEvent;
         private System.Windows.Forms.Button buttonStopEvent;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }

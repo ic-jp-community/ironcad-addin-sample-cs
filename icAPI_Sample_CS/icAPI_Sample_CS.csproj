@@ -98,6 +98,12 @@
     <Compile Include="EventHandler\Event_DocSelectionEvents.cs" />
     <Compile Include="EventHandler\Event_ICAddInUtils.cs" />
     <Compile Include="EventHandler\Event_MouseEvents.cs" />
+    <Compile Include="SampleTransformMatrix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SampleTransformMatrix.designer.cs">
+      <DependentUpon>SampleTransformMatrix.cs</DependentUpon>
+    </Compile>
     <Compile Include="ICToolsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Icons\icon_samplematrix_l.png" />
+    <None Include="Icons\icon_samplematrix_s.png" />
+    <EmbeddedResource Include="SampleTransformMatrix.resx">
+      <DependentUpon>SampleTransformMatrix.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ICToolsForm.resx">
       <DependentUpon>ICToolsForm.cs</DependentUpon>
     </EmbeddedResource>

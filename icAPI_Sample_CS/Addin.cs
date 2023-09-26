@@ -18,6 +18,7 @@ namespace ICApiAddin.icAPI_Sample_CS
         private ZCommandHandler m_buttonForm;
         private ZCommandHandler m_buttonDockingBar;
         private ZCommandHandler m_buttonSceneTreeForm;
+        private ZCommandHandler m_buttonMatrixForm;
         #endregion
 
         //Constractor
@@ -63,11 +64,17 @@ namespace ICApiAddin.icAPI_Sample_CS
                     m_buttonDockingBar = piAddinSite.CreateCommandHandler("SampleDockingBar", "SampleDockingBar", "icAPI C# SampleDockingBar Description", "icAPI C# SampleDockingBar ToolTip", oImageSmall2, oImageLarge2);
                     m_buttonDockingBar.Enabled = true;
 
-                    //ボタンの作成(Form)
+                    //ボタンの作成(SceneTree)
                     stdole.IPictureDisp oImageSmall3 = ConvertImage.ImageToPictureDisp(Properties.Resources.icon_scenetree_s);
                     stdole.IPictureDisp oImageLarge3 = ConvertImage.ImageToPictureDisp(Properties.Resources.icon_scenetree_l);
                     m_buttonSceneTreeForm = piAddinSite.CreateCommandHandler("SceneTreeForm", "SceneTreeForm", "icAPI C# SceneTreeForm Description", "icAPI C# SceneTreeForm ToolTip", oImageSmall3, oImageLarge3);
                     m_buttonSceneTreeForm.Enabled = true;
+
+                    //ボタンの作成(Matrix)
+                    stdole.IPictureDisp oImageSmall4 = ConvertImage.ImageToPictureDisp(Properties.Resources.icon_samplematrix_l);
+                    stdole.IPictureDisp oImageLarge4 = ConvertImage.ImageToPictureDisp(Properties.Resources.icon_samplematrix_s);
+                    m_buttonMatrixForm = piAddinSite.CreateCommandHandler("SampleMatrixForm", "SampleMatrixForm", "icAPI C# SampleMatrixForm Description", "icAPI C# SampleMatrixForm ToolTip", oImageSmall4, oImageLarge4);
+                    m_buttonMatrixForm.Enabled = true;
 
                     //Control bar
                     ZControlBar cControlBar;
@@ -84,12 +91,14 @@ namespace ICApiAddin.icAPI_Sample_CS
                     cControl = cControls.Add(ezControlType.Z_CONTROL_BUTTON, m_buttonForm.ControlDescriptor, null);
                     cControl = cControls.Add(ezControlType.Z_CONTROL_BUTTON, m_buttonDockingBar.ControlDescriptor, null);
                     cControl = cControls.Add(ezControlType.Z_CONTROL_BUTTON, m_buttonSceneTreeForm.ControlDescriptor, null);
+                    cControl = cControls.Add(ezControlType.Z_CONTROL_BUTTON, m_buttonMatrixForm.ControlDescriptor, null);
 
                     //Add button to RibbonBar
                     //                    cRibbonBar.AddButton(m_buttonForm.ControlDescriptor);
                     cRibbonBar.AddButton2(m_buttonForm.ControlDescriptor, false);
                     cRibbonBar.AddButton2(m_buttonDockingBar.ControlDescriptor, true);
                     cRibbonBar.AddButton2(m_buttonSceneTreeForm.ControlDescriptor, true);
+                    cRibbonBar.AddButton2(m_buttonMatrixForm.ControlDescriptor, true);
 
                     /************************************************************
                       リボンバーに大きいボタンで表示させたい時はこっち↓を使用する
@@ -103,6 +112,8 @@ namespace ICApiAddin.icAPI_Sample_CS
                     m_buttonDockingBar.OnUpdate += new _IZCommandEvents_OnUpdateEventHandler(m_buttonDockingBar_OnUpdate);
                     m_buttonSceneTreeForm.OnClick += new _IZCommandEvents_OnClickEventHandler(m_buttonSceneTreeForm_OnClick);
                     m_buttonSceneTreeForm.OnUpdate += new _IZCommandEvents_OnUpdateEventHandler(m_buttonSceneTreeForm_OnUpdate);
+                    m_buttonMatrixForm.OnClick += new _IZCommandEvents_OnClickEventHandler(m_buttonMatrixForm_OnClick);
+                    m_buttonMatrixForm.OnUpdate += new _IZCommandEvents_OnUpdateEventHandler(m_buttonMatrixForm_OnUpdate);
 
                     //Register App Events
                 }
@@ -140,6 +151,11 @@ namespace ICApiAddin.icAPI_Sample_CS
         private void m_buttonSceneTreeForm_OnUpdate()
         {
             m_buttonSceneTreeForm.Enabled = true;  //Change to m_button.Enabled = false; to disable the button  
+        }
+
+        private void m_buttonMatrixForm_OnUpdate()
+        {
+            m_buttonMatrixForm.Enabled = true;  //Change to m_button.Enabled = false; to disable the button  
         }
 
 
@@ -186,6 +202,16 @@ namespace ICApiAddin.icAPI_Sample_CS
             {
                 SampleSceneTree sampleTreeform = new SampleSceneTree(iZDoc);
                 sampleTreeform.ShowDialog();
+            }
+        }
+
+        private void m_buttonMatrixForm_OnClick()
+        {
+            IZDoc iZDoc = GetActiveDoc();
+            if (iZDoc != null)
+            {
+                SampleTransformMatrix frm = new SampleTransformMatrix(this.IronCADApp, iZDoc);
+                frm.Show();
             }
         }
 

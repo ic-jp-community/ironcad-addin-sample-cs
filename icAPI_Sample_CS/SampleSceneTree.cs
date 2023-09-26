@@ -429,5 +429,10 @@ namespace ICApiAddin.icAPI_Sample_CS
             return scale;
         }
         #endregion
+
+        private void treeGridViewScene_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
