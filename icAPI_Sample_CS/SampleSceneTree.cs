@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace ICApiAddin.icAPI_Sample_CS
 {
@@ -43,6 +44,19 @@ namespace ICApiAddin.icAPI_Sample_CS
         public const string SCENE_DATATYPE_SCENE = "SCENE";
         public const string SCENE_DATATYPE_FILE = "FILE";
         #endregion
+
+        public class CustomProperty
+        {
+            public string name;
+            public object value;
+            public bool scopeIsShared;
+            public CustomProperty(string name, object value, bool shared)
+            {
+                this.name = name;
+                this.value = value;
+                this.scopeIsShared = shared;
+            }
+        }
 
         /// <summary>
         /// コンストラクタ
@@ -83,14 +97,166 @@ namespace ICApiAddin.icAPI_Sample_CS
             string elementId = string.Empty;
             int currentDepth = 0;
 
-            TreeGridNode topNode = tgv.Nodes.Add(Path.GetFileName(this._doc.Name), systemName, elementId, SCENE_DATATYPE_SCENE, currentDepth, this._doc.Name);
+            TreeGridNode topNode = tgv.Nodes.Add(Path.GetFileName(this._doc.Name), systemName, elementId, SCENE_DATATYPE_SCENE, currentDepth, this._doc.Name, string.Empty, string.Empty);
             topNode.ImageIndex = getImageIndexAssemblyParts(SCENE_DATATYPE_SCENE);
             topNode.Height = (int)(treeNodeHeight * getScalingFactor());
             topNode.Expand();
             int depth = 1;
+
+            /* パーツアセンブリのデータを取得する */
             GetSceneTreeInfo(sceneDoc.GetTopElement(), treeNodeHeight, ref topNode, ref depth);
+            
+            /* ツリーをすべて展開する */
             TreeGridNodeCollection nodes = topNode.Nodes;
             ExpandTreeGridViewTreeNodes(ref nodes);
+
+            /* カスタムプロパティのデータを取得する */
+            setCustomPropertiesToTreeGridViewScene(sceneDoc);
+        }
+
+        /// <summary>
+        /// アセンブリ/パーツのカスタムプロパティをTreeGridViewに設定する
+        /// </summary>
+        private void setCustomPropertiesToTreeGridViewScene(IZSceneDoc sceneDoc)
+        {
+            for (int rowIndex = 0; rowIndex < treeGridViewScene.Rows.Count; rowIndex++)
+            {
+                /* ElementIDを取得する */
+                  string elementID = treeGridViewScene["ID", rowIndex].Value.ToString();
+                if (string.IsNullOrEmpty(elementID) == true)
+                {
+                    /* ElementIDがない(トップシーン) */
+                    continue;
+                }
+
+                /* ElementIDからElementを取得する */
+                IZSceneDocUtility util = sceneDoc as IZSceneDocUtility;
+                IZElement elem = util.GetElementById(Int32.Parse(elementID));
+                if (elem == null)
+                {
+                    MessageBox.Show("Elementを取得できませんでした。" + string.Format("ElementID: {0}", elementID));
+                    continue;
+                }
+
+                /* 当該Elementのカスタムプロパティデータを取得する */
+                List<CustomProperty> customProperties = new List<CustomProperty>();
+                GetCustomProperties(elem, ref customProperties);
+
+                /* カスタムプロパティをTreeGridViewに反映する */
+                for (int propIndex = 0; propIndex < customProperties.Count; propIndex++)
+                {
+                    string name = customProperties[propIndex].name;
+                    object value = customProperties[propIndex].value;
+                    bool isShared = customProperties[propIndex].scopeIsShared;
+                    string columnName = createColumnName(name, isShared);    /* 列名は範囲情報を付加する */
+
+                    /* 既に列[カスタムプロパティ名+_xxxShared]があるかチェック */
+                    if (treeGridViewScene.Columns.Contains(columnName) == false)
+                    {
+                        /* 列にないカスタムプロパティは新規に列を追加 */
+                        AddCustomPropertyColumn(columnName, name, isShared);
+                    }
+
+                    /* プロパティ値を反映する */
+                    treeGridViewScene[columnName, rowIndex].Value = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// カスタムプロパティを取得する
+        /// </summary>
+        /// <param name="element">パーツ/アセンブリのElement</param>
+        /// <param name="customPropeties">カスラムプロパティ</param>
+        public static void GetCustomProperties(IZElement element, ref List<CustomProperty> customPropeties)
+        {
+            /* elementチェック */
+            if (element == null)
+            {
+                return;
+            }
+
+            /* カスタムプロパティの情報 */
+            IZCustomPropMgr propMgr = element.CustomPropMgr[true];
+            if (propMgr.Count != 0)
+            {
+                for (int j = 0; j < propMgr.Count; j++)
+                {
+                    string name = string.Empty;
+                    object value = null;
+                    propMgr.GetAt(j, out name, out value);
+                    customPropeties.Add(new CustomProperty(name, value, true));
+                }
+            }
+            /* カスタムプロパティの情報 */
+            propMgr = element.CustomPropMgr[false];
+            if (propMgr.Count != 0)
+            {
+                for (int j = 0; j < propMgr.Count; j++)
+                {
+                    string name = string.Empty;
+                    object value = null;
+                    propMgr.GetAt(j, out name, out value);
+                    customPropeties.Add(new CustomProperty(name, value, false));
+                }
+            }
+        }
+
+        /// <summary>
+        /// 範囲情報を含んだプロパティ列名を作成する
+        /// </summary>
+        /// <param name="name">プロパティ名</param>
+        /// <param name="isShared">範囲</param>
+        /// <returns></returns>
+        private string createColumnName(string name, bool isShared)
+        {
+            string columnName = name + (isShared ? "_Shared" : "_notShared");
+            return columnName;
+        }
+
+        /// <summary>
+        /// 指定された名前の列を追加して列indexを取得する/（列がすでにある場合は作成せずにindexを返す）
+        /// </summary>
+        /// <param name="name">列名</param>
+        /// <returns>列のインデックス</returns>
+        private int AddCustomPropertyColumn(string name, string headerName, bool isShared)
+        {
+            int index = -1;
+            /* 作成する列名が空白でないかチェック */
+            if (string.IsNullOrEmpty(name) == true)
+            {
+                return -1;
+            }
+            /* すでに列があるかチェック */
+            if (treeGridViewScene.Columns.Contains(name) == true)
+            {
+                /* 列がある */
+                index = treeGridViewScene.Columns[name].Index;
+            }
+            else
+            {
+                /* 列がない(新規列を作成) */
+                DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+                column.Name = name;
+                column.HeaderText = headerName;
+                Font font = column.DefaultCellStyle.Font;
+                if (isShared == true)
+                {
+                    /* すべてのリンクインスタンス */
+                    column.Tag = "CustomPropertyShared";
+                    column.HeaderCell.Style.BackColor = Color.LightSkyBlue;
+                }
+                else
+                {
+                    /* このパーツアセンブリのみ */
+                    column.Tag = "CustomPropertyNotShared";
+                    column.HeaderCell.Style.BackColor = Color.LightBlue;
+                }
+                treeGridViewScene.Columns.Add(column);
+                index = treeGridViewScene.Columns.Count - 1;
+                treeGridViewScene.Columns[index].HeaderCell.Style.Font = new Font(new Font(treeGridViewScene.Font.Name, 10), treeGridViewScene.Font.Style | FontStyle.Bold);
+            }
+            return index;
         }
 
         /// <summary>
@@ -177,10 +343,14 @@ namespace ICApiAddin.icAPI_Sample_CS
                         bool link = false;
                         string linkStr = string.Empty;
                         string dispName = string.Empty;
+                        string partNumber = string.Empty;
+                        string partDescription = string.Empty;
                         switch (childElem.Type)
                         {
                             case eZElementType.Z_ELEMENT_ASSEMBLY:
                                 IZAssembly asm = childElem as IZAssembly;
+                                partNumber = asm.BOMPartNumber;
+                                partDescription = asm.BOMDescription;
                                 linkStr = asm.GetExternallyLinkedInfo(out link);
                                 dataType = GetInnerDataType(childElem.Type, link, eZBodyType.Z_BODY_EMPTY);
                                 break;
@@ -190,6 +360,8 @@ namespace ICApiAddin.icAPI_Sample_CS
                             case eZElementType.Z_ELEMENT_SHEETMETAL_PART:
                                 IZPart part = childElem as IZPart;
                                 eZBodyType body = eZBodyType.Z_BODY_EMPTY;
+                                partNumber = part.BOMPartNumber;
+                                partDescription = part.BOMDescription;
                                 linkStr = part.GetExternallyLinkedInfo(out link);
                                 if (childElem.Type == eZElementType.Z_ELEMENT_PART)
                                 {
@@ -203,9 +375,10 @@ namespace ICApiAddin.icAPI_Sample_CS
                         dispName = childElem.Name;
 
                         TreeGridNode childNode = null;
-                        childNode = currNode.Nodes.Add(childElem.Name, childElem.SystemName, childElem.Id, dataType, currDepth, linkStr);
+                        childNode = currNode.Nodes.Add(childElem.Name, childElem.SystemName, childElem.Id, dataType, currDepth, linkStr, partNumber, partDescription);
                         childNode.ImageIndex = getImageIndexAssemblyParts(dataType);
                         childNode.Height = (int)(nodeHeight * getScalingFactor());
+                        childNode.Tag = childElem;
                         currDepth++;
                         GetSceneTreeInfo(childElem, nodeHeight, ref childNode, ref currDepth);
                         currDepth--;
@@ -221,7 +394,7 @@ namespace ICApiAddin.icAPI_Sample_CS
 
 
         /// <summary>
-        /// element種類からicVaultのデータ種類を取得する
+        /// element種類からデータ種類を取得する
         /// </summary>
         /// <param name="elemType">elementの種類</param>
         /// <param name="isLinked">外部リンク有無 true;外部リンクあり false:外部リンクなし</param>
@@ -433,6 +606,50 @@ namespace ICApiAddin.icAPI_Sample_CS
         private void treeGridViewScene_SelectionChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonOutputCSV_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "csvファイル(*.csv)|*.csv;|すべてのファイル(*.*)|*.*";
+            DialogResult dret = sfd.ShowDialog();
+            if(dret != DialogResult.OK)
+            {
+                return;
+            }
+            using (StreamWriter sw = new StreamWriter(sfd.FileName, false, System.Text.Encoding.UTF8))
+            {
+                StringBuilder sb = new StringBuilder();
+                string tempStr = string.Empty;
+                /* ヘッダ部分の出力 */
+                for (int columnIndex = 0; columnIndex < treeGridViewScene.Columns.Count; columnIndex++)
+                {
+                    string hederText = treeGridViewScene.Columns[columnIndex].HeaderText;
+                    sb.Append(hederText + ", ");
+                }
+                tempStr = sb.ToString();
+                tempStr = tempStr.Substring(0, (tempStr.Length - ", ".Length));
+                sw.WriteLine(tempStr);
+
+                /* 実データ部分の出力 */
+                for (int rowIndex = 0; rowIndex < treeGridViewScene.Rows.Count; rowIndex++)
+                {
+                    sb.Clear();
+                    for (int columnIndex = 0; columnIndex < treeGridViewScene.Columns.Count; columnIndex++)
+                    {
+                        object obj = treeGridViewScene[columnIndex, rowIndex].Value;
+                        string value = string.Empty;
+                        if (obj != null)
+                        {
+                            value = treeGridViewScene[columnIndex, rowIndex].Value.ToString();
+                        }
+                        sb.Append(value + ", ");
+                    }
+                    tempStr = sb.ToString();
+                    tempStr = tempStr.Substring(0, (tempStr.Length - ", ".Length));
+                    sw.WriteLine(tempStr);
+                }
+            }
         }
     }
 }

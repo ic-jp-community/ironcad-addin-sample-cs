@@ -59,7 +59,11 @@ namespace icAPI_Sample_CS_Configuration
                 Addin.ADDIN_GUID,
                 "icAPI_Sample_CS",
                 "IRONCAD JP Community icAPI_Sample_C#プロジェクト");
-            if ((ret1 != true) && (ret2 != true) && (ret3 != true) && (ret4 != true))
+            bool ret5 = AddConfig(@"C:\Program Files\IronCAD\2024\Config\Ironcad.Addin.config",
+                Addin.ADDIN_GUID,
+                "icAPI_Sample_CS",
+                "IRONCAD JP Community icAPI_Sample_C#プロジェクト");
+            if ((ret1 != true) && (ret2 != true) && (ret3 != true) && (ret4 != true) && (ret5 != true))
             {
                 TopMostMessageBox.Show("IRONCADが見つかりませんでした。\n(インストールは続行されます)");
             }
@@ -87,6 +91,8 @@ namespace icAPI_Sample_CS_Configuration
                 delnum += DeleteConfig(@"C:\Program Files\IronCAD\2022\Config\Ironcad.Addin.config",
                                         Addin.ADDIN_GUID);
                 delnum += DeleteConfig(@"C:\Program Files\IronCAD\2023\Config\Ironcad.Addin.config",
+                        Addin.ADDIN_GUID);
+                delnum += DeleteConfig(@"C:\Program Files\IronCAD\2024\Config\Ironcad.Addin.config",
                         Addin.ADDIN_GUID);
                 if (delnum == 0)
                 {

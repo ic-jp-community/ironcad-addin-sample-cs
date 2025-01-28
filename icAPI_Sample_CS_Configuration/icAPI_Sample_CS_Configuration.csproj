@@ -80,7 +80,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="icAPI_Sample_CS_Configuration.cs" />
+    <Compile Include="icAPI_Sample_CS_Configuration.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

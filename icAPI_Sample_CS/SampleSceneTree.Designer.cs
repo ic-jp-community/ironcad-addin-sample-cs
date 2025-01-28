@@ -30,15 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SampleSceneTree));
             this.treeGridViewScene = new AdvancedDataGridView.TreeGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Scene = new AdvancedDataGridView.TreeGridColumn();
             this.SystemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Depth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExternalLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BomPartNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BomDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonOutputCSV = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.treeGridViewScene)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeGridViewScene
@@ -53,15 +58,34 @@
             this.ID,
             this.DataType,
             this.Depth,
-            this.ExternalLink});
+            this.ExternalLink,
+            this.BomPartNumber,
+            this.BomDescription});
             this.treeGridViewScene.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeGridViewScene.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.treeGridViewScene.ImageList = null;
             this.treeGridViewScene.Location = new System.Drawing.Point(2, 2);
-            this.treeGridViewScene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.treeGridViewScene.Margin = new System.Windows.Forms.Padding(2);
             this.treeGridViewScene.Name = "treeGridViewScene";
-            this.treeGridViewScene.Size = new System.Drawing.Size(593, 741);
+            this.treeGridViewScene.Size = new System.Drawing.Size(700, 741);
             this.treeGridViewScene.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.treeGridViewScene, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 745);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // Scene
             // 
@@ -73,7 +97,7 @@
             // 
             // SystemName
             // 
-            this.SystemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SystemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.SystemName.FillWeight = 80F;
             this.SystemName.HeaderText = "システム名";
             this.SystemName.Name = "SystemName";
@@ -83,7 +107,7 @@
             // 
             // ID
             // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.ID.FillWeight = 30F;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
@@ -100,7 +124,7 @@
             // 
             // Depth
             // 
-            this.Depth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Depth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Depth.FillWeight = 30F;
             this.Depth.HeaderText = "深さ";
             this.Depth.Name = "Depth";
@@ -116,35 +140,62 @@
             this.ExternalLink.ReadOnly = true;
             this.ExternalLink.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // tableLayoutPanel1
+            // BomPartNumber
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.treeGridViewScene, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 745);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.BomPartNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.BomPartNumber.HeaderText = "パーツ番号";
+            this.BomPartNumber.Name = "BomPartNumber";
+            this.BomPartNumber.ReadOnly = true;
+            this.BomPartNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.BomPartNumber.Width = 64;
+            // 
+            // BomDescription
+            // 
+            this.BomDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.BomDescription.HeaderText = "説明";
+            this.BomDescription.Name = "BomDescription";
+            this.BomDescription.ReadOnly = true;
+            this.BomDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.BomDescription.Width = 35;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.buttonOutputCSV, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(707, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(144, 100);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // buttonOutputCSV
+            // 
+            this.buttonOutputCSV.Location = new System.Drawing.Point(3, 3);
+            this.buttonOutputCSV.Name = "buttonOutputCSV";
+            this.buttonOutputCSV.Size = new System.Drawing.Size(118, 30);
+            this.buttonOutputCSV.TabIndex = 0;
+            this.buttonOutputCSV.Text = "CSVファイルへ出力";
+            this.buttonOutputCSV.UseVisualStyleBackColor = true;
+            this.buttonOutputCSV.Click += new System.EventHandler(this.buttonOutputCSV_Click);
             // 
             // SampleSceneTree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(854, 745);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SampleSceneTree";
             this.Text = "SampleSceneTree";
             this.Load += new System.EventHandler(this.SampleSceneTree_Load);
             ((System.ComponentModel.ISupportInitialize)(this.treeGridViewScene)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +211,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Depth;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExternalLink;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BomPartNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BomDescription;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button buttonOutputCSV;
     }
 }
