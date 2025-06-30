@@ -33,6 +33,7 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonResetRotate = new System.Windows.Forms.Button();
             this.trackBarAngleX = new System.Windows.Forms.TrackBar();
             this.buttonSetTransform = new System.Windows.Forms.Button();
             this.buttonResetAngleZ = new System.Windows.Forms.Button();
@@ -80,7 +81,8 @@
             this.textBoxMatrix13 = new System.Windows.Forms.TextBox();
             this.textBoxMatrix12 = new System.Windows.Forms.TextBox();
             this.textBoxMatrix11 = new System.Windows.Forms.TextBox();
-            this.buttonResetRotate = new System.Windows.Forms.Button();
+            this.comboBoxAllElement = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -112,6 +114,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label1);
+            this.tabPage4.Controls.Add(this.comboBoxAllElement);
             this.tabPage4.Controls.Add(this.groupBox1);
             this.tabPage4.Controls.Add(this.buttonGetCurrentMatrix);
             this.tabPage4.Controls.Add(this.label3);
@@ -145,6 +149,17 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "変更後の情報";
+            // 
+            // buttonResetRotate
+            // 
+            this.buttonResetRotate.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonResetRotate.Location = new System.Drawing.Point(127, 182);
+            this.buttonResetRotate.Name = "buttonResetRotate";
+            this.buttonResetRotate.Size = new System.Drawing.Size(81, 19);
+            this.buttonResetRotate.TabIndex = 21;
+            this.buttonResetRotate.Text = "回転をリセット";
+            this.buttonResetRotate.UseVisualStyleBackColor = true;
+            this.buttonResetRotate.Click += new System.EventHandler(this.buttonResetRotate_Click);
             // 
             // trackBarAngleX
             // 
@@ -442,7 +457,7 @@
             // 
             this.buttonGetCurrentMatrix.Location = new System.Drawing.Point(252, 31);
             this.buttonGetCurrentMatrix.Name = "buttonGetCurrentMatrix";
-            this.buttonGetCurrentMatrix.Size = new System.Drawing.Size(117, 35);
+            this.buttonGetCurrentMatrix.Size = new System.Drawing.Size(133, 35);
             this.buttonGetCurrentMatrix.TabIndex = 2;
             this.buttonGetCurrentMatrix.Text = "現在のMatrixを取得";
             this.buttonGetCurrentMatrix.UseVisualStyleBackColor = true;
@@ -634,16 +649,24 @@
             this.textBoxMatrix11.Size = new System.Drawing.Size(40, 19);
             this.textBoxMatrix11.TabIndex = 0;
             // 
-            // buttonResetRotate
+            // comboBoxAllElement
             // 
-            this.buttonResetRotate.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonResetRotate.Location = new System.Drawing.Point(127, 182);
-            this.buttonResetRotate.Name = "buttonResetRotate";
-            this.buttonResetRotate.Size = new System.Drawing.Size(81, 19);
-            this.buttonResetRotate.TabIndex = 21;
-            this.buttonResetRotate.Text = "回転をリセット";
-            this.buttonResetRotate.UseVisualStyleBackColor = true;
-            this.buttonResetRotate.Click += new System.EventHandler(this.buttonResetRotate_Click);
+            this.comboBoxAllElement.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxAllElement.FormattingEnabled = true;
+            this.comboBoxAllElement.Location = new System.Drawing.Point(347, 87);
+            this.comboBoxAllElement.Name = "comboBoxAllElement";
+            this.comboBoxAllElement.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxAllElement.TabIndex = 22;
+            this.comboBoxAllElement.SelectedIndexChanged += new System.EventHandler(this.comboBoxAllElement_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(252, 90);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 12);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "リストから選択する";
             // 
             // SampleTransformMatrix
             // 
@@ -726,5 +749,7 @@
         private System.Windows.Forms.Button buttonResetAngleX;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonResetRotate;
+        private System.Windows.Forms.ComboBox comboBoxAllElement;
+        private System.Windows.Forms.Label label1;
     }
 }

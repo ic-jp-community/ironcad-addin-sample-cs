@@ -1,14 +1,15 @@
-﻿using System;
+﻿using AdvancedDataGridView;
+using interop.ICApiIronCAD;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-
-using System.Runtime.InteropServices;
-using interop.ICApiIronCAD;
 
 namespace ICApiAddin.icAPI_Sample_CS
 {
@@ -18,6 +19,25 @@ namespace ICApiAddin.icAPI_Sample_CS
         private IZBaseApp _baseApp;
         private IZDoc _doc;
         private IZSceneDoc _sceneDoc;
+
+        /// <summary>
+        /// combobox表示用データ
+        /// </summary>
+        public class comboBoxData
+        {
+            public string ElementUserName { get; set; }
+            public IZElement Element { get; set; }
+            public comboBoxData()
+            {
+                this.ElementUserName = string.Empty;
+                this.Element = null;
+            }
+            public comboBoxData(string elementUserName, IZElement element)
+            {
+                this.ElementUserName = elementUserName;
+                this.Element = element;
+            }
+        }
 
         /// <summary>
         /// コンストラクタ
@@ -30,7 +50,64 @@ namespace ICApiAddin.icAPI_Sample_CS
             this._baseApp = app;
             this._doc = izDoc;
             this._sceneDoc = izDoc as IZSceneDoc;
+
+            /* パーツアセンブリのデータを取得しComboBoxに表示する */
+            List<comboBoxData> elementList = new List<comboBoxData>();
+            GetSceneTreeElement(this._sceneDoc.GetTopElement(), ref elementList);
+            comboBoxAllElement.DisplayMember = "ElementUserName";
+            comboBoxAllElement.ValueMember = "Element";
+            comboBoxAllElement.DataSource = elementList;
         }
+
+        /// <summary>
+        /// シーンファイルのElementを取得する
+        /// </summary>
+        /// <param name="currElem">現在のアセンブリ/パーツ Element</param>
+        /// <param name="elementList"></param>
+        /// <returns></returns>
+        public static bool GetSceneTreeElement(IZElement currElem, ref List<comboBoxData> elementList)
+        {
+            try
+            {
+                if ((currElem.Type != eZElementType.Z_ELEMENT_PART) &&
+                    (currElem.Type != eZElementType.Z_ELEMENT_ASSEMBLY) &&
+                    (currElem.Type != eZElementType.Z_ELEMENT_SHEETMETAL_PART) &&
+                    (currElem.Type != eZElementType.Z_ELEMENT_UNKNOWN))
+                {
+
+                    return false;
+                }
+                ZArray childs = currElem.GetChildrenZArray();
+                int count = 0;
+                childs.Count(out count);
+                for (int i = 0; i < count; i++)
+                {
+                    object obj;
+                    IZElement childElem;
+                    childs.Get(i, out obj);
+                    childElem = obj as IZElement;
+                    if ((childElem.Type == eZElementType.Z_ELEMENT_PART) ||
+                        (childElem.Type == eZElementType.Z_ELEMENT_ASSEMBLY) ||
+                        (childElem.Type == eZElementType.Z_ELEMENT_WIRE) ||
+                        (childElem.Type == eZElementType.Z_ELEMENT_PROFILE) ||
+                        (childElem.Type == eZElementType.Z_ELEMENT_SHEETMETAL_PART))
+                    {
+                        /* パーツ/アセンブリの情報 */
+                        IZDoc doc = childElem.OwningDoc;
+                        IZSceneDoc scene = doc as IZSceneDoc;
+                        string name = childElem.Name;
+                        elementList.Add(new comboBoxData(name, childElem));
+                        GetSceneTreeElement(childElem, ref elementList);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return true;
+        }
+
 
 
         /// <summary>
@@ -51,14 +128,44 @@ namespace ICApiAddin.icAPI_Sample_CS
         /// <param name="e"></param>
         private void buttonGetCurrentMatrix_Click(object sender, EventArgs e)
         {
+            ShowSelectedElementMatrix();
+        }
+
+
+        /// <summary>
+        /// comboBoxAllElementの変更 イベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBoxAllElement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IZElement elem = comboBoxAllElement.SelectedValue as IZElement;
+            if (elem == null)
+            {
+                return;
+            }
+            IZSelectionMgr selectionMgr = this._sceneDoc.SelectionMgr;
+            selectionMgr.RemoveAllFromSelection();
+            selectionMgr.AddElementToSelection(elem, true);
+            ShowSelectedElementMatrix();
+        }
+
+
+        /// <summary>
+        /// 選択しているElementのMatrixを表示する
+        /// </summary>
+        /// <returns></returns>
+        private bool ShowSelectedElementMatrix()
+        {
             IZSceneElement element = GetSelectedOneElement();
-            if(element == null)
+            if (element == null)
             {
                 MessageBox.Show("Elementが選択されていません。");
-                return;
+                return false;
             }
             ZMathMatrix matrix = element.GetPositionTransform();
             ShowCurrentElementMatrix(matrix);
+            return true;
         }
 
 
@@ -419,6 +526,7 @@ namespace ICApiAddin.icAPI_Sample_CS
             ResetAngle(false, false, true);
         }
         #endregion リセットボタン
+
 
     }
 }
