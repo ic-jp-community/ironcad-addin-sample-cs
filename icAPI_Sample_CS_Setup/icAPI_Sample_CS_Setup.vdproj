@@ -15,38 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_065E3420106C92AD6EF26029B0E4EAE8"
-        "OwnerKey" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_55E1B8CDE6068ADF04E9F512A513FA5B"
+        "OwnerKey" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6E5C44D5158338B377328D4E03A26449"
         "OwnerKey" = "8:_7B686CCBA4BC4C99A5ED5E97A6C6D4D6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7B3D01EBBA920E0DE42A85C12C98116C"
-        "OwnerKey" = "8:_B4DC023F2603480AB88C084E65D0AFC1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7B3D01EBBA920E0DE42A85C12C98116C"
-        "OwnerKey" = "8:_065E3420106C92AD6EF26029B0E4EAE8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7B3D01EBBA920E0DE42A85C12C98116C"
-        "OwnerKey" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -59,6 +41,24 @@
         {
         "MsmKey" = "8:_7C2B39CDC43C39A272A1085689370502"
         "OwnerKey" = "8:_7B686CCBA4BC4C99A5ED5E97A6C6D4D6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_854BBDB6CC19E40EA2EB8B26A57BD0E4"
+        "OwnerKey" = "8:_36C159DDC27444ED8C0B83FDC49EFD0E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_854BBDB6CC19E40EA2EB8B26A57BD0E4"
+        "OwnerKey" = "8:_B4DC023F2603480AB88C084E65D0AFC1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_854BBDB6CC19E40EA2EB8B26A57BD0E4"
+        "OwnerKey" = "8:_55E1B8CDE6068ADF04E9F512A513FA5B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,19 +100,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_065E3420106C92AD6EF26029B0E4EAE8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B4DC023F2603480AB88C084E65D0AFC1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7B3D01EBBA920E0DE42A85C12C98116C"
+        "OwnerKey" = "8:_55E1B8CDE6068ADF04E9F512A513FA5B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_854BBDB6CC19E40EA2EB8B26A57BD0E4"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -230,7 +230,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:v4.5"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.5"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=395269"
                 }
@@ -238,14 +238,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_065E3420106C92AD6EF26029B0E4EAE8"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_55E1B8CDE6068ADF04E9F512A513FA5B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:IRONCAD_ICAPI_CS, Version=0.0.0.4, Culture=neutral, PublicKeyToken=a2b0442fc83d6b2c, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:IRONCAD_ICAPI_CS, Version=0.0.0.5, Culture=neutral, PublicKeyToken=a2b0442fc83d6b2c, processorArchitecture=AMD64"
                 "ScatterAssemblies"
                 {
-                    "_065E3420106C92AD6EF26029B0E4EAE8"
+                    "_55E1B8CDE6068ADF04E9F512A513FA5B"
                     {
                     "Name" = "8:IRONCAD_ICAPI_CS.dll"
                     "Attributes" = "3:512"
@@ -289,21 +289,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7B3D01EBBA920E0DE42A85C12C98116C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C2B39CDC43C39A272A1085689370502"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ExpandableGridView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=56647e1eee90f6d4, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_7B3D01EBBA920E0DE42A85C12C98116C"
-                    {
-                    "Name" = "8:ExpandableGridView.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ExpandableGridView.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:OLEACC.dll"
+            "TargetName" = "8:OLEACC.dll"
             "Tag" = "8:"
             "Folder" = "8:_63D6B68AA8944334B143819022A0F121"
             "Condition" = "8:"
@@ -320,10 +309,21 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C2B39CDC43C39A272A1085689370502"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_854BBDB6CC19E40EA2EB8B26A57BD0E4"
             {
-            "SourcePath" = "8:OLEACC.dll"
-            "TargetName" = "8:OLEACC.dll"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ExpandableGridView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=56647e1eee90f6d4, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_854BBDB6CC19E40EA2EB8B26A57BD0E4"
+                    {
+                    "Name" = "8:ExpandableGridView.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ExpandableGridView.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63D6B68AA8944334B143819022A0F121"
             "Condition" = "8:"
@@ -476,15 +476,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:IRONCAD icAPI Sample C#(ProductName)"
-        "ProductCode" = "8:{134E3D0D-6CB1-42C2-ADD0-581EE9AC6B99}"
-        "PackageCode" = "8:{6BFC9D42-80E4-487B-B2E0-8572AADE560A}"
+        "ProductCode" = "8:{C8D11511-FE17-4027-A24C-C6D89EFED379}"
+        "PackageCode" = "8:{6D4F6DA5-C61B-445A-B2C7-5802F208E730}"
         "UpgradeCode" = "8:{DBA044CD-92AD-4A49-962F-9E0242CA5BF1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:0.0.5"
+        "ProductVersion" = "8:0.0.6"
         "Manufacturer" = "8:IRONCAD JP Community"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
